@@ -1,0 +1,33 @@
+
+
+.imagen {
+    height: 50vh;
+    width: auto;
+    background-image: url('../../../../wwwroot/images/logo-transparent.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+.intro {
+    border: 1px solid blue;
+    border-radius: 10px 10px;
+    padding: 10px;
+    background-color: dodgerblue;
+}
+
+.microsoft-avatar {
+  background-image: url('../../../../wwwroot/images/microsoft-logo.png');
+  background-size: cover;
+}
+
+.google-avatar {
+  background-image: url('../../../../wwwroot/images/google-logo.jpg');
+  background-size: cover;
+}
+
+a {
+    text-decoration: none;
+}
+

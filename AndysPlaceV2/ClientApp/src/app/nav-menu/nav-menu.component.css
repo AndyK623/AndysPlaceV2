@@ -1,0 +1,63 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+nav {
+  background-color: rgb(228, 228, 228);
+}
+
+mat-toolbar {
+  background-color: rgb(228, 228, 228);
+  height: 56px;
+}
+
+.siteName {
+  font-size: 150%;
+}
+
+
+.imagen {
+  height: 15vh;
+  width: auto;
+}
+
+.menu-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.valign-center {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+a {
+    text-decoration: none;
+    font-size: 105%;
+}
+
+li {
+    padding-top: 2vh;
+}
+
+.icono {
+  padding-top: 5vh;
+}
+

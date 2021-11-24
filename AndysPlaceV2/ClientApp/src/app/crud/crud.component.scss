@@ -1,0 +1,185 @@
+
+#C2 {
+  display: inline-block;
+  font-size: calc(1em + 3vw);
+}
+
+#R2 {
+  display: inline-block;
+  font-size: calc(1em + 3vw);
+}
+
+#U2 {
+  display: inline-block;
+  font-size: calc(1em + 3vw);
+}
+
+#D2 {
+  display: inline-block;
+  font-size: calc(1em + 3vw);
+}
+
+.subtitulo2 {
+  font-size: calc(0.8em + 1vw);
+}
+
+.rojo {
+  color: red;
+  display: inline-block;
+  margin-right: 2vh;
+  font-size: calc(0.6em + 1vw);
+}
+
+//------------------------------------------------------------------------------------------------
+
+.mat-paginator {
+  background-color: lightgreen;
+}
+
+mat-icon:hover {
+  cursor: pointer;
+}
+
+
+/*Esto es necesario para eliminar los márgenes externos en blanco de la tabla*/
+table {
+  /*width: calc(100% + 5px);
+    margin: -10px -5px 0 -5px;*/
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.tabla {
+  width: 100%;
+  max-width: 100%;
+}
+
+/*No se puede poner margen o padding a los elementos de una tabla por eso es necesario usar border para separar las columnas*/
+td, th {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  /*Sin border-bottom y sin border-top con eso más la clase table en la tabla me ponen la línea entre registros*/
+  /*Super importante este vertical-align el texto queda en el medio y se ve mucho mejor*/
+  vertical-align: middle;
+}
+
+/*Sin esto me queda un borde blanco en la parte superior de la tabla arriba de los headers*/
+th.mat-header-cell {
+  border-top: 0;
+}
+/*Esto es para no ponerle borde izquierdo a la primer columna porque así se te sale de la pantalla*/
+td.mat-cell:first-child {
+  border-left: 0;
+}
+
+th.mat-header-cell:first-child {
+  border-left: 0;
+}
+
+/*Esto es para no ponerle borde derecho a la última columna porque así se te sale de la pantalla*/
+td.mat-cell:last-child {
+  border-right: 0;
+}
+
+tr.mat.row:last-child {
+  border-bottom: 0;
+}
+
+th.mat-header-cell:last-child {
+  border-right: 0;
+}
+
+tr:hover {
+  /*font-weight:bold;*/
+  /*background-color:lemonchiffon;*/
+}
+
+/*Esto aplica a las pantallas menores o iguales a 768px*/
+@media screen and (max-width:768px) {
+  .to-hide {
+    display: none;
+  }
+
+  .fix-margin {
+    border-right: 0;
+  }
+
+  .pantalla-grande {
+    display: none;
+  }
+}
+
+/*Esto aplica a las pantallas mayores o iguales a 769px*/
+@media screen and (min-width: 769px) {
+  .detalle {
+    display: none;
+  }
+
+  .expandir {
+    display: none;
+  }
+
+  .pantalla-pequeña {
+    display: none;
+  }
+}
+
+/*---------------------------------------*/
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+/*Esto es lo que lo hace invisible al detalle desplegable, tanto overflow: hidden; como display: flex; deben permancener así y
+    para que el detalle se alinee de forma vertical y no horizontal hay que poner flex-direction: column; sino se te rompe todo
+*/
+.element-detail {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  flex-basis: 50%;
+  /*align-items: stretch;
+  width:100%;*/
+}
+
+/*Esto dice todos los tr y td dentro de la tabla que tiene como clase element-detail*/
+.element-detail tr td {
+  /*border: 10px solid transparent;*/
+  /*border:1px solid black;*/
+}
+
+/*Esto es para corregir el ancho y la alineación de los <td>, funciona bien en el 98% de los casos, es aceptable y cuando no
+    funciona bien sólo queda un poquito desalineado. Y lo mejor de todo es que solo pasa en los small mobiles
+*/
+.element-detail td {
+  /*border: 10px solid transparent;*/
+  width: 40vw;
+  min-width: 25vw;
+}
+
+
+
+
+.detalle {
+  border: 0;
+  max-width: 100%;
+}
+
+/*.detalle:enabled(.example-expanded-row){
+    background-color: whitesmoke;
+  }*/
+

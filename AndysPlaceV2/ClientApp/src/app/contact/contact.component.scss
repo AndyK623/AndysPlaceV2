@@ -1,0 +1,56 @@
+
+
+@keyframes travel {
+    0% { left: calc(0px - 3vw); }
+    100% { left: 100%; }  
+}
+
+.person {
+  font-size: 10vw;
+}
+
+/*@media(max-width: 500px) {
+
+}*/
+
+.message {
+  font-size: 3vw;
+  margin-top: 4vw;
+  position: relative;
+  animation-name: travel;
+  animation-duration: 4s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function:ease-in-out;
+}
+
+#spinner {
+  display: none;
+}
+
+.dual-ring::after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid black;
+  border-color: black transparent black transparent;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+

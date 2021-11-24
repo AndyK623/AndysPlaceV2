@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/lib/bootstrap-4.4.1-dist/css/bootstrap.min.css";
+
+
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+
+@font-face {
+  font-family: Bookerly;
+  src: url("../../wwwroot/fonts/Bookerly-Regular.ttf") format('truetype');
+}
+/*Con esto establezco que todo el texto de la página use Bookerly*/
+* {
+  font-family: Bookerly, sans-serif;
+}
+
+
+/*ESTO ES LO QUE HACE QUE EL FOOTER QUEDE SIEMPRE DEBAJO DEL BODY Y QUE SE VEA TODO BIEN*/
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/*Estos son todos los inputs*/
+.mat-form-field {
+  width: 100%;
+  font-size: 16px;
+}
+

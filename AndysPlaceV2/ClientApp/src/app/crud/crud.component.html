@@ -1,0 +1,165 @@
+
+<div class="text-center mt-3">
+
+  <p id="C2">C</p>
+  <p class="rojo">reate</p>
+  <p id="R2">R</p>
+  <p class="rojo">ead</p>
+  <p id="U2">U</p>
+  <p class="rojo">pdate</p>
+  <p id="D2">D</p>
+  <p class="rojo">elete</p>
+
+  <h2 class="subtitulo2 mb-4">Every discipline has its fundamentals, this is it for a software developer.</h2>
+  <hr />
+
+  <p *ngIf="!Customers"><em>Loading...</em></p>
+
+</div>
+
+
+<div class="commands text-right" *ngIf="Customers">
+  <button mat-raised-button color="primary" type="submit" routerLink="/Customer">Add a New Customer</button>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <mat-form-field [hidden]="!Customers">
+      <mat-label>Search For</mat-label>
+      <mat-select [(value)]="filterColumn">
+        <mat-option [value]="column.value" *ngFor="let column of columns">{{column.viewValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-6">
+    <mat-form-field [hidden]="!Customers">
+      <input id="filtro" matInput (keyup)="onFilterTextChanged($event.target.value);" placeholder="Search query..." />
+    </mat-form-field>
+  </div>
+
+</div>
+
+<div class="tabla mat-elevation-z8">
+
+  <table mat-table [dataSource]="Customers" class="table table-hover" [hidden]="!Customers"
+         matSort (matSortChange)="loadData()" matSortActive="{{defaultSortColumn}}" matSortDirection="{{defaultSortOrder}}"
+         multiTemplateDataRows>
+
+    <ng-container matColumnDef="FirstName">
+      <th class="fix-margin" mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+      <td mat-cell *matCellDef="let customer">
+        <a class="pantalla-grande" [routerLink]="['/Customer', customer.customerId]" title="Edit Customer">{{customer.firstName}}</a>
+        <p class="pantalla-pequeña">{{customer.firstName}}</p>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="LastName">
+      <th class="to-hide" mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td class="to-hide" mat-cell *matCellDef="let customer">{{customer.lastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="CompanyName">
+      <th class="to-hide" mat-header-cell *matHeaderCellDef mat-sort-header>Company Name</th>
+      <td class="to-hide" mat-cell *matCellDef="let customer" >{{customer.companyName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="EmailAddress">
+      <th class="to-hide" mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td class="to-hide" mat-cell *matCellDef="let customer" >{{customer.emailAddress}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phone">
+      <th class="to-hide" mat-header-cell *matHeaderCellDef>Phone</th>
+      <td class="to-hide" mat-cell *matCellDef="let customer" >{{customer.phone}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="CountryName">
+      <th class="to-hide" mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+      <td class="to-hide" mat-cell *matCellDef="let customer" >{{customer.countryName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="OpeningDate">
+      <th class="to-hide" mat-header-cell *matHeaderCellDef>Opening Date</th>
+      <td class="to-hide" mat-cell *matCellDef="let customer" >{{customer.openingDate}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete">
+      <th class="to-hide" mat-header-cell *matHeaderCellDef>Delete</th>
+      <td class="to-hide text-center" mat-cell *matCellDef="let customer">
+        <mat-icon (click)="openDialog('Delete', customer)"
+                  aria-hidden="false" aria-label="Delete Icon" title="Delete Customer">delete</mat-icon>
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="expandedDetail">
+      <td class="detalle" mat-cell *matCellDef="let element" [attr.colspan]="1">
+
+        <table class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <tr>
+            <td><b>First Name:</b></td>
+            <td>{{element.firstName}}</td>
+          </tr>
+          <tr>
+            <td><b>Last Name:</b></td>
+            <td>{{element.lastName}}</td>
+          </tr>
+          <tr>
+            <td><b>Company Name:</b></td>
+            <td>{{element.companyName}}</td>
+          </tr>
+          <tr>
+            <td><b>Email:</b></td>
+            <td>{{element.emailAddress}}</td>
+          </tr>
+          <tr>
+            <td><b>Phone:</b></td>
+            <td>{{element.phone}}</td>
+          </tr>
+          <tr>
+            <td><b>Country:</b></td>
+            <td>{{element.countryName}}</td>
+          </tr>
+          <tr>
+            <td><b>Modified Date:</b></td>
+            <td>{{element.openingDate}}</td>
+          </tr>
+
+          <tr>
+            <td style="width: 100vw;">
+              <a mat-raised-button color="primary" class="mr-3" title="Edit" [routerLink]="['/Customer', element.customerId]">Edit</a>
+              <button mat-raised-button color="warn" title="Delete" (click)="openDialog('Delete', element)">Delete</button>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: lightgreen"></tr>
+
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+        class="example-element-row"
+        [class.example-element-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+  </table>
+
+
+  <mat-paginator [hidden]="!Customers" (page)="getData($event)"
+                 [pageSize]="10" [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons>
+
+  </mat-paginator>
+
+</div>
+
+
+
+
+
+
+

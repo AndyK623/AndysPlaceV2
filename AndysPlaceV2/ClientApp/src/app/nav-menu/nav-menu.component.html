@@ -1,0 +1,35 @@
+<header>
+
+  <mat-toolbar class="mat-elevation-z7" fxLayout="row">
+
+    <a mat-button class="valign-center siteName" routerLink="/">
+      <span>Andy's Code</span>
+    </a>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.lt-lg>
+      <ul fxLayout="row" fxLayoutGap="20px" class="menu-items">
+        <li><a mat-button routerLink="/Crud">CRUD</a></li>
+        <li><a mat-button routerLink="/Charts">Charts</a></li>
+        <li><a mat-button matTooltip="Coming soon...">Reports</a></li>
+        <li><a mat-button matTooltip="Coming soon...">Games</a></li>
+        <li><a mat-button routerLink="/AboutMe">About Me</a></li>
+        <li><a mat-button routerLink="/Contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.gt-md>
+      <a class="valign-center" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Navigation Menu">
+        <mat-icon>menu</mat-icon>
+      </a>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/Crud">CRUD</button>
+        <button mat-menu-item routerLink="/Charts">Charts</button>
+        <button mat-menu-item routerLink="/AboutMe">About Me</button>
+        <button mat-menu-item routerLink="/Contact">Contact</button>
+      </mat-menu>
+    </div>
+
+  </mat-toolbar>
+
+
+</header>
